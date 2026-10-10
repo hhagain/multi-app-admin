@@ -1,0 +1,42 @@
+name: 发布后台原型
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - assets/icons/**
+      - scripts/prepare-pages.py
+      - .github/workflows/deploy-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 获取最新页面
+        uses: actions/checkout@v4
+      - name: 准备发布目录
+        run: python3 scripts/prepare-pages.py
+      - name: 配置 GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: 上传页面与图标
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .pages-site
+      - name: 发布到固定网址
+        id: deployment
+        uses: actions/deploy-pages@v5
+
