@@ -6,6 +6,8 @@ on:
     paths:
       - index.html
       - assets/icons/**
+      - assets/vendor/**
+      - assets/data-query-worker.js
       - scripts/prepare-pages.py
       - .github/workflows/deploy-pages.yml
   workflow_dispatch:
@@ -39,4 +41,3 @@ jobs:
       - name: 发布到固定网址
         id: deployment
         uses: actions/deploy-pages@v5
-

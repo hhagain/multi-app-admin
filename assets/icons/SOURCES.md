@@ -12,3 +12,10 @@
 - download_2_line.svg：导出筛选结果
 
 均使用包内原始 SVG，固有尺寸 24×24；菜单以 20×20、按钮以 16×16 显示，比例不变。许可证见 MingCute-LICENSE.txt。
+
+查询结果视图切换新增图标同样来自 mingcute_icon@2.9.72 官方 npm 包，保留原始 SVG（24×24），显示为 20×20：
+- table_line.svg：表格
+- chart_line_line.svg：折线图
+- chart_bar_line.svg：柱状图
+- chart_pie_line.svg：饼图
+- filter_line.svg：漏斗图（漏斗形状）
